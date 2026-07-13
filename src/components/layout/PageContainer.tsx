@@ -1,1 +1,14 @@
-export default function PageContainer({ children }: { children?: React.ReactNode }) { return <div className='border border-border p-4 bg-card rounded-md m-2'>PageContainer {children}</div>; }
+import { cn } from "@/lib/utils";
+
+interface PageContainerProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+export default function PageContainer({ children, className }: PageContainerProps) {
+  return (
+    <main className={cn("flex-1 overflow-y-auto p-6", className)}>
+      {children}
+    </main>
+  );
+}
