@@ -13,7 +13,7 @@ import { RegisterPage } from "@/features/auth/pages/RegisterPage";
 import { ForgotPasswordPage } from "@/features/auth/pages/ForgotPasswordPage";
 
 // Dashboard Pages
-import Dashboard from "@/pages/Dashboard";
+import { DashboardPage } from "@/features/dashboard/pages/DashboardPage";
 import Repositories from "@/pages/Repositories";
 import RepositoryDetails from "@/pages/RepositoryDetails";
 import Search from "@/pages/Search";
@@ -40,7 +40,7 @@ export const router = createBrowserRouter([
       {
         element: <DashboardLayout />,
         children: [
-          { path: "dashboard", element: <Dashboard /> },
+          { path: "dashboard", element: <DashboardPage /> },
           { path: "repositories", element: <Repositories /> },
           { path: "repositories/:id", element: <RepositoryDetails /> },
           { path: "search", element: <Search /> },
