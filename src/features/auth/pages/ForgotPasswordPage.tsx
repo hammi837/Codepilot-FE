@@ -71,12 +71,13 @@ export function ForgotPasswordPage() {
               <p className="text-sm font-medium text-green-600 dark:text-green-400">
                 Check your email for a link to reset your password. If it doesn&apos;t appear within a few minutes, check your spam folder.
               </p>
-              <Button asChild variant="link" className="mt-4">
-                <Link to="/login" className="gap-2">
-                  <ArrowLeft className="h-4 w-4" />
-                  Return to sign in
-                </Link>
-              </Button>
+              <Link
+                to="/login"
+                className="mt-4 flex items-center gap-2 justify-center text-sm font-medium text-primary hover:underline"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                Return to sign in
+              </Link>
             </motion.div>
           ) : (
             <motion.form
