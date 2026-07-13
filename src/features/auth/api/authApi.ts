@@ -1,5 +1,5 @@
 import { api } from "@/services/api";
-import type { LoginCredentials, RegisterCredentials, TokenResponse, User } from "@/features/auth/types/auth";
+import type { LoginCredentials, RegisterCredentials, TokenResponse, User, ForgotPasswordResponse, ResetPasswordRequest } from "@/features/auth/types/auth";
 
 export const authApi = {
   /**
@@ -26,6 +26,22 @@ export const authApi = {
    */
   getCurrentUser: async (): Promise<User> => {
     const response = await api.get<User>("/users/me");
+    return response.data;
+  },
+
+  /**
+   * POST /api/v1/auth/forgot-password
+   */
+  forgotPassword: async (email: string): Promise<ForgotPasswordResponse> => {
+    const response = await api.post<ForgotPasswordResponse>("/auth/forgot-password", { email });
+    return response.data;
+  },
+
+  /**
+   * POST /api/v1/auth/reset-password
+   */
+  resetPassword: async (data: ResetPasswordRequest): Promise<ForgotPasswordResponse> => {
+    const response = await api.post<ForgotPasswordResponse>("/auth/reset-password", data);
     return response.data;
   },
 };

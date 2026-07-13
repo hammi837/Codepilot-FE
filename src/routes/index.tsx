@@ -10,6 +10,7 @@ import NotFound from "@/pages/NotFound";
 // Auth Pages
 import { LoginPage } from "@/features/auth/pages/LoginPage";
 import { RegisterPage } from "@/features/auth/pages/RegisterPage";
+import { ForgotPasswordPage } from "@/features/auth/pages/ForgotPasswordPage";
 
 // Dashboard Pages
 import Dashboard from "@/pages/Dashboard";
@@ -28,6 +29,7 @@ export const router = createBrowserRouter([
       { index: true, element: <Landing /> },
       { path: "login", element: <LoginPage /> },
       { path: "register", element: <RegisterPage /> },
+      { path: "forgot-password", element: <ForgotPasswordPage /> },
     ],
   },
   // Protected routes — wrapped in ProtectedRoute
