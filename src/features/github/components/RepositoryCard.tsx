@@ -14,11 +14,13 @@ interface RepositoryCardProps {
 
 export function RepositoryCard({ repository, index = 0 }: RepositoryCardProps) {
   const { mutate: cloneRepo, isPending } = useCloneRepository();
-  const [cloned, setCloned] = useState(false);
+  const storageKey = `cloned_${repository.full_name}`;
+  const [cloned, setCloned] = useState(() => !!localStorage.getItem(storageKey));
 
   const handleClone = () => {
     cloneRepo(repository.full_name, {
       onSuccess: () => {
+        localStorage.setItem(storageKey, "1");
         setCloned(true);
       },
     });

@@ -15,9 +15,9 @@ import { ForgotPasswordPage } from "@/features/auth/pages/ForgotPasswordPage";
 // Dashboard Pages
 import { DashboardPage } from "@/features/dashboard/pages/DashboardPage";
 import { GithubPage } from "@/features/github/pages/GithubPage";
-import { RepositoryDetailsPage } from "@/features/github/pages/RepositoryDetailsPage";
-import Search from "@/pages/Search";
-import Chat from "@/pages/Chat";
+import { WorkspacePage } from "@/features/repository/pages/WorkspacePage";
+import { ChatPage } from "@/features/chat/pages/ChatPage";
+import { SearchPage } from "@/features/search/pages/SearchPage";
 import Settings from "@/pages/Settings";
 
 export const router = createBrowserRouter([
@@ -42,9 +42,9 @@ export const router = createBrowserRouter([
         children: [
           { path: "dashboard", element: <DashboardPage /> },
           { path: "repositories", element: <GithubPage /> },
-          { path: "repositories/:id", element: <RepositoryDetailsPage /> },
-          { path: "search", element: <Search /> },
-          { path: "chat", element: <Chat /> },
+          { path: "repositories/:id", element: <WorkspacePage /> },
+          { path: "search", element: <SearchPage /> },
+          { path: "chat", element: <ChatPage /> },
           { path: "settings", element: <Settings /> },
         ],
       },

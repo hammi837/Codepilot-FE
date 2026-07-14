@@ -78,7 +78,7 @@ export function RecentRepositories({ repositories }: RecentRepositoriesProps) {
               )}
             </div>
 
-            <Link to={`/repositories/${repo.id}`} className="absolute inset-0 z-10" aria-label={`View ${repo.name}`}>
+            <Link to={`/repositories/${encodeURIComponent(repo.name)}`} className="absolute inset-0 z-10" aria-label={`View ${repo.name}`}>
               <span className="sr-only">View repository</span>
             </Link>
           </motion.div>
