@@ -12,3 +12,15 @@ export default function PageContainer({ children, className }: PageContainerProp
     </main>
   );
 }
+
+/**
+ * Full-bleed container for workspace-style pages that manage
+ * their own layout and scrolling internally (Chat, Workspace).
+ */
+export function FullBleedContainer({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex flex-1 flex-col overflow-hidden">
+      {children}
+    </div>
+  );
+}
