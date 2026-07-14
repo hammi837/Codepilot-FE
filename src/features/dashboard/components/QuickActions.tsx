@@ -8,14 +8,14 @@ const actions = [
     title: "Connect GitHub",
     description: "Link your account to import repositories",
     icon: GitBranch,
-    to: "/settings?tab=integrations",
+    to: "/repositories",
     variant: "default" as const,
   },
   {
     title: "Clone Repository",
     description: "Start indexing a new codebase",
     icon: FolderGit2,
-    to: "/repositories/new",
+    to: "/repositories",
     variant: "outline" as const,
   },
   {

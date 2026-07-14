@@ -14,8 +14,8 @@ import { ForgotPasswordPage } from "@/features/auth/pages/ForgotPasswordPage";
 
 // Dashboard Pages
 import { DashboardPage } from "@/features/dashboard/pages/DashboardPage";
-import Repositories from "@/pages/Repositories";
-import RepositoryDetails from "@/pages/RepositoryDetails";
+import { GithubPage } from "@/features/github/pages/GithubPage";
+import { RepositoryDetailsPage } from "@/features/github/pages/RepositoryDetailsPage";
 import Search from "@/pages/Search";
 import Chat from "@/pages/Chat";
 import Settings from "@/pages/Settings";
@@ -41,8 +41,8 @@ export const router = createBrowserRouter([
         element: <DashboardLayout />,
         children: [
           { path: "dashboard", element: <DashboardPage /> },
-          { path: "repositories", element: <Repositories /> },
-          { path: "repositories/:id", element: <RepositoryDetails /> },
+          { path: "repositories", element: <GithubPage /> },
+          { path: "repositories/:id", element: <RepositoryDetailsPage /> },
           { path: "search", element: <Search /> },
           { path: "chat", element: <Chat /> },
           { path: "settings", element: <Settings /> },

@@ -5,6 +5,7 @@ import { router } from "@/routes";
 import { ThemeProvider } from "@/app/providers/ThemeProvider";
 import { QueryProvider } from "@/app/providers/QueryProvider";
 import { useAuthStore } from "@/features/auth/store/authStore";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 function AppContent() {
   const initialize = useAuthStore((s) => s.initialize);
@@ -23,11 +24,13 @@ function AppContent() {
 
 function App() {
   return (
-    <QueryProvider>
-      <ThemeProvider defaultTheme="system" storageKey="codepilot-ui-theme">
-        <AppContent />
-      </ThemeProvider>
-    </QueryProvider>
+    <ErrorBoundary>
+      <QueryProvider>
+        <ThemeProvider defaultTheme="system" storageKey="codepilot-ui-theme">
+          <AppContent />
+        </ThemeProvider>
+      </QueryProvider>
+    </ErrorBoundary>
   );
 }
 
