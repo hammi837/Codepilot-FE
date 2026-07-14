@@ -160,6 +160,20 @@ export const useChatStore = create<ChatStore>()(
           }),
         })),
 
+      // Replace entire content of an assistant message (used when stream was empty)
+      setAssistantContent: (conversationId, messageId, content) =>
+        set((state) => ({
+          conversations: state.conversations.map((c) => {
+            if (c.id !== conversationId) return c;
+            return {
+              ...c,
+              messages: c.messages.map((m) =>
+                m.id === messageId ? { ...m, content } : m
+              ),
+            };
+          }),
+        })),
+
       getActiveConversation: () => {
         const { conversations, activeConversationId } = get();
         return conversations.find((c) => c.id === activeConversationId) ?? null;

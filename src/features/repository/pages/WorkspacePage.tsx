@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, AlertCircle } from "lucide-react";
 import { toast } from "sonner";
@@ -18,11 +18,24 @@ import { Button } from "@/components/ui/button";
 
 export function WorkspacePage() {
   const { id } = useParams<{ id: string }>();
+  const [searchParams] = useSearchParams();
   const repoName = id ? decodeURIComponent(id).split("/").pop()! : "";
   const repoFullName = id ? decodeURIComponent(id) : "";
 
-  const { selectedFile, activePanel, reset } = useWorkspaceStore();
+  const { selectedFile, activePanel, reset, selectFile, expandFolder } = useWorkspaceStore();
   const [storedChunks, setStoredChunks] = useState<number | undefined>(undefined);
+
+  // Auto-select file if passed via ?file= query param (e.g. from source citations)
+  const fileFromQuery = searchParams.get("file");
+  useEffect(() => {
+    if (!fileFromQuery) return;
+    // Expand all parent folders of the target file
+    const parts = fileFromQuery.split("/");
+    for (let i = 1; i < parts.length; i++) {
+      expandFolder(parts.slice(0, i).join("/"));
+    }
+    selectFile(fileFromQuery);
+  }, [fileFromQuery, selectFile, expandFolder]);
 
   // Reset workspace state when repo changes
   useEffect(() => {

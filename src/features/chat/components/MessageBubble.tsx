@@ -48,7 +48,7 @@ export function MessageBubble({ message, repository, onFileOpen }: MessageBubble
             "rounded-2xl px-4 py-3 text-sm leading-relaxed",
             isUser
               ? "bg-primary text-primary-foreground rounded-tr-sm"
-              : "bg-muted border border-border rounded-tl-sm",
+              : "bg-muted text-foreground border border-border rounded-tl-sm",
             message.isError && "border-destructive/50 bg-destructive/10 text-destructive"
           )}
         >
